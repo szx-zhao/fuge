@@ -1,7 +1,7 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import Login from './components/Login.vue'
+import usesrInfo from './components/userInfo.vue'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import Element from 'element-ui'
@@ -19,8 +19,21 @@ Vue.prototype.$http = axios
 
 const router = new VueRouter({
     routes: [
-        {path: "/App", component: App, meta: {title: "眼疾辅助诊断系统"},},
-    ],
+        {
+        path: "/",
+        name: "Login",
+        component: Login,
+        },
+        {
+        path: "/userInfo",
+        name: "userInfo",
+        component: usesrInfo,
+        },
+        {
+        path: "*",
+        redirect: "/",
+        },
+        ],
     mode: "history"
 })
 
@@ -33,3 +46,4 @@ new Vue({
     router,
     render: h => h(App)
 })
+
